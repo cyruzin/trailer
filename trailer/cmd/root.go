@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	tmdb "github.com/cyruzin/golang-tmdb"
 	"github.com/spf13/cobra"
 )
 
@@ -22,7 +23,22 @@ var cmdMovie = &cobra.Command{
 	Long:  "Searches the trailer of one or more movies by name.",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Links dos filmes")
+		tmdbClient, err := tmdb.Init(os.Getenv("APIKey"))
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		trailers, err := tmdbClient.GetMovieVideos(500, nil)
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		for _, t := range trailers.Results {
+			fmt.Println("https://www.youtube.com/watch?v=" + t.Key)
+		}
+
 	},
 }
 

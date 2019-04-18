@@ -1,0 +1,6 @@
+github.com/cyruzin/golang-tmdb v0.0.0-20190226151246-c4b89ad95cf9 h1:HPmRcXKLF6JaIuEL84LtDXGdCuTdYodkFw3RgzDgGeY=
+github.com/cyruzin/golang-tmdb v0.0.0-20190226151246-c4b89ad95cf9/go.mod h1:hKMvO9d+363B8+nD6FWLLTCuxYzRDfivtwZOZa6lLGQ=
+github.com/spf13/cobra v0.0.3 h1:ZlrZ4XsMRm04Fr5pSFxBgfND2EBVa1nLpiy1stUsX/8=
+github.com/spf13/cobra v0.0.3/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
+github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=
+github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
