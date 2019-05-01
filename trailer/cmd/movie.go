@@ -9,10 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// Movie ...
-func Movie() *cobra.Command {
-
-	cmd := &cobra.Command{
+func movieCmd() *cobra.Command {
+	return &cobra.Command{
 		Use:   "movie [name of the movie]",
 		Short: "Searches for a movie trailer",
 		Long:  "Searches one or more trailers from a movie.",
@@ -52,5 +50,4 @@ func Movie() *cobra.Command {
 			}
 		},
 	}
-	return cmd
 }

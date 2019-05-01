@@ -19,8 +19,9 @@ func NewRootCmd() *cobra.Command {
 		},
 	}
 
-	rootCmd.AddCommand(Movie())
-	rootCmd.AddCommand(TV())
+	rootCmd.AddCommand(movieCmd())
+	rootCmd.AddCommand(tvCmd())
+	rootCmd.AddCommand(versionCmd())
 
 	return rootCmd
 }

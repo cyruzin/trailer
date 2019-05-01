@@ -9,10 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// TV ...
-func TV() *cobra.Command {
-
-	cmd := &cobra.Command{
+func tvCmd() *cobra.Command {
+	return &cobra.Command{
 		Use:   "tv [name of the tv show]",
 		Short: "Searches for a tv show trailer",
 		Long:  "Searches one or more trailers from a tv show.",
@@ -52,5 +50,4 @@ func TV() *cobra.Command {
 			}
 		},
 	}
-	return cmd
 }
