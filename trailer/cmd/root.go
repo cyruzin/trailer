@@ -15,7 +15,7 @@ func NewRootCmd() *cobra.Command {
 		Short: "Trailer is a tool that get trailers.",
 		Long:  "Trailer is a tool that will quickly bring the link of any movie with a few commands.",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("Trailer command")
+			fmt.Println("Welcome to Trailer Cli :) - Let's search some trailer?")
 		},
 	}
 
