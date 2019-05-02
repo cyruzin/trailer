@@ -3,13 +3,25 @@ package cmd
 import (
 	"fmt"
 
+	tmdb "github.com/cyruzin/golang-tmdb"
+
 	"github.com/spf13/cobra"
 )
 
 const youtubeURL = "https://www.youtube.com/watch?v="
 
+// Trailer client structure.
+type Trailer struct {
+	client *tmdb.Client
+}
+
+// NewTMDBClient initiates the client.
+func NewTMDBClient(client *tmdb.Client) *Trailer {
+	return &Trailer{client}
+}
+
 // RootCmd creates the root command.
-func RootCmd() *cobra.Command {
+func (t *Trailer) RootCmd() *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:   "trailer",
 		Short: "Trailer is a tool that get trailers.",
@@ -21,8 +33,8 @@ func RootCmd() *cobra.Command {
 		},
 	}
 
-	rootCmd.AddCommand(movieCmd())
-	rootCmd.AddCommand(tvCmd())
+	rootCmd.AddCommand(t.movieCmd())
+	rootCmd.AddCommand(t.tvCmd())
 	rootCmd.AddCommand(versionCmd())
 
 	return rootCmd
