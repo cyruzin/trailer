@@ -2,12 +2,6 @@
 
 Trailer is a cli tool that will quickly bring the trailers of any movie or tv show with a few commands.
 
-## Install
-
-```sh
-go get -u github.com/cyruzin/trailer
-```
-
 ## Usage
 
 For Movies:
