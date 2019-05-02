@@ -20,6 +20,7 @@ func movieCmd() *cobra.Command {
 
 			if err != nil {
 				fmt.Println(err)
+				return
 			}
 
 			argsJoin := strings.Join(args, " ")
@@ -28,6 +29,7 @@ func movieCmd() *cobra.Command {
 
 			if err != nil {
 				fmt.Println(err)
+				return
 			}
 
 			if len(search.Results) <= 0 {
@@ -38,6 +40,7 @@ func movieCmd() *cobra.Command {
 			trailers, err := client.GetMovieVideos(int(search.Results[0].ID), nil)
 			if err != nil {
 				fmt.Println(err)
+				return
 			}
 
 			fmt.Println("Results for:", argsJoin)
