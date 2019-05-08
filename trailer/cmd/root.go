@@ -10,6 +10,8 @@ import (
 
 const youtubeURL = "https://www.youtube.com/watch?v="
 
+const errorFetch = "Oops! Something went wrong."
+
 // Trailer client structure.
 type Trailer struct {
 	client *tmdb.Client

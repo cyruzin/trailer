@@ -19,7 +19,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 			search, err := t.client.GetSearchTVShow(argsJoin, nil)
 
 			if err != nil {
-				fmt.Println(err)
+				fmt.Println(errorFetch)
 				return
 			}
 
@@ -30,7 +30,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 
 			trailers, err := t.client.GetTVVideos(int(search.Results[0].ID), nil)
 			if err != nil {
-				fmt.Println(err)
+				fmt.Println(errorFetch)
 				return
 			}
 
