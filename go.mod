@@ -8,7 +8,7 @@ require (
 	github.com/coreos/etcd v3.3.13+incompatible // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd v0.0.0-20190620071333-e64a0ec8b42a // indirect
-	github.com/cyruzin/golang-tmdb v1.0.1
+	github.com/cyruzin/golang-tmdb v1.1.1
 	github.com/go-kit/kit v0.9.0 // indirect
 	github.com/golang/mock v1.3.1 // indirect
 	github.com/google/pprof v0.0.0-20190515194954-54271f7e092f // indirect

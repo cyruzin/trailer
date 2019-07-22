@@ -30,6 +30,8 @@ github.com/cyruzin/golang-tmdb v1.0.0 h1:2lxkfbQx+GATSDPjDQ0y/4pqF7a1SF2gTOeSj/v
 github.com/cyruzin/golang-tmdb v1.0.0/go.mod h1:ka1Gufj/wBUkU4phN6Ixx3a+a4UDwnZjK4eXLCjxkkI=
 github.com/cyruzin/golang-tmdb v1.0.1 h1:l5uY2oFdEMMr8xVeToZR1+1V7fHHdoeQnCQVuK3vZzs=
 github.com/cyruzin/golang-tmdb v1.0.1/go.mod h1:ka1Gufj/wBUkU4phN6Ixx3a+a4UDwnZjK4eXLCjxkkI=
+github.com/cyruzin/golang-tmdb v1.1.1 h1:QCOnSr2+PmLxYtCHQcRBoui2MUhWc6d+NiLqnn1be8c=
+github.com/cyruzin/golang-tmdb v1.1.1/go.mod h1:ka1Gufj/wBUkU4phN6Ixx3a+a4UDwnZjK4eXLCjxkkI=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
