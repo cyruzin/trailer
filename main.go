@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 
 	tmdb "github.com/cyruzin/golang-tmdb"
@@ -11,14 +11,14 @@ import (
 func main() {
 	client, err := tmdb.Init(os.Getenv("APIKey"))
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 
 	trailer := cmd.NewTMDBClient(client)
 
 	if err := trailer.RootCmd().Execute(); err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		os.Exit(1)
 	}
 }

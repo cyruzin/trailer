@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/spf13/cobra"
 )
@@ -12,7 +12,7 @@ func versionCmd() *cobra.Command {
 		Short:   "Print the version number of Trailer",
 		Aliases: []string{"v"},
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("Trailer Cli v.0.0.1")
+			log.Println("Trailer Cli v.1.0.1")
 		},
 	}
 }
