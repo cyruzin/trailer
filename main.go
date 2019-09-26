@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	client, err := tmdb.Init(os.Getenv("APIKey"))
+	client, err := tmdb.Init("9aca69849a23528a419aea463387945f")
 	if err != nil {
 		log.Println(err)
 		return
