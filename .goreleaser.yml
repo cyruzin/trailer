@@ -1,5 +1,13 @@
 project_name: trailer
+
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod tidy
+
 builds:
+  - binary: program
   - env:
       - CGO_ENABLED=0
     ldflags: 

@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -18,28 +18,28 @@ func (t *Trailer) tvCmd() *cobra.Command {
 
 			search, err := t.client.GetSearchTVShow(argsJoin, nil)
 			if err != nil {
-				fmt.Println(errorFetch)
+				log.Println(errorFetch)
 				return
 			}
 
 			if len(search.Results) <= 0 {
-				fmt.Println("No results for:", argsJoin)
+				log.Println("No results for:", argsJoin)
 				return
 			}
 
 			trailers, err := t.client.GetTVVideos(int(search.Results[0].ID), nil)
 			if err != nil {
-				fmt.Println(errorFetch)
+				log.Println(errorFetch)
 				return
 			}
 
-			fmt.Println("Results for:", argsJoin)
-			fmt.Println("")
+			log.Println("Results for:", argsJoin)
+			log.Println("")
 
 			for _, trailer := range trailers.Results {
-				fmt.Println(trailer.Name)
-				fmt.Println(youtubeURL + trailer.Key)
-				fmt.Println("")
+				log.Println(trailer.Name)
+				log.Println(youtubeURL + trailer.Key)
+				log.Println("")
 			}
 		},
 	}
