@@ -4,6 +4,7 @@ env:
   - GO111MODULE=on
 before:
   hooks:
+    - rm -Rf ./dist
     - go mod tidy
 
 builds:
