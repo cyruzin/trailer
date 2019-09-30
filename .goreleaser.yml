@@ -7,7 +7,6 @@ before:
     - go mod tidy
 
 builds:
-  - binary: program
   - env:
       - CGO_ENABLED=0
     ldflags: 
