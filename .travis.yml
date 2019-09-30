@@ -8,9 +8,6 @@ go:
 git:
   depth: 1
 
-script:
-  - go get -v -t -d ./... 
-
 deploy:
 - provider: script
   skip_cleanup: true

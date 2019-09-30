@@ -1,10 +1,12 @@
 # Trailer
 
+[![Build Status](https://travis-ci.org/cyruzin/trailer.svg?branch=master)](https://travis-ci.org/cyruzin/trailer)
+
 Trailer is a cli tool that will quickly bring the trailers of any movie or tv show with a few commands.
 
-## Installation
+## Build
 
-In the "main.go" file insert your TMDb API Key and then type the command below in your terminal to create a binary.
+Type the command below in the terminal to create the binary.
 
 ```sh
 make build
