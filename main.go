@@ -6,10 +6,19 @@ import (
 
 	tmdb "github.com/cyruzin/golang-tmdb"
 	"github.com/cyruzin/trailer/trailer/cmd"
+	"github.com/joho/godotenv"
 )
 
+func init() {
+	if err := godotenv.Load(); err != nil {
+		log.Print("No .env file found")
+	}
+}
+
 func main() {
-	client, err := tmdb.Init("9aca69849a23528a419aea463387945f")
+	apiKey, _ := os.LookupEnv("TMDB_KEY")
+
+	client, err := tmdb.Init(apiKey)
 	if err != nil {
 		log.Println(err)
 		return
