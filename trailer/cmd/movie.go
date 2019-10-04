@@ -27,13 +27,28 @@ func (t *Trailer) movieCmd() *cobra.Command {
 				return
 			}
 
+			releaseDates, err := t.client.GetMovieReleaseDates(int(search.Results[0].ID))
+			if err != nil {
+				log.Println(errorFetch)
+				return
+			}
+
+			usReleaseDate := "NA"
+
+			for _, res := range releaseDates.Results {
+				if res.Iso3166_1 == "US" {
+					usReleaseDate = parseDate(res.ReleaseDates[0].ReleaseDate)
+				}
+			}
+
+
 			trailers, err := t.client.GetMovieVideos(int(search.Results[0].ID), nil)
 			if err != nil {
 				log.Println(errorFetch)
 				return
 			}
 
-			log.Println("Results for:", argsJoin)
+			log.Printf("Results for: %s (US Release: %s)", argsJoin, usReleaseDate)
 			log.Println("")
 
 			for _, trailer := range trailers.Results {

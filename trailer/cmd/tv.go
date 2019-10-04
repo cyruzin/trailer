@@ -27,12 +27,27 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
+			tvDetails, err := t.client.GetTVDetails(int(search.Results[0].ID), nil)
+			if err != nil {
+				log.Println(errorFetch)
+				return
+			}
+
+			firstAiredDate := "NA"
+
+			if tvDetails.FirstAirDate != "" {
+				firstAiredDate = parseDate(tvDetails.FirstAirDate)
+			}
+
 			trailers, err := t.client.GetTVVideos(int(search.Results[0].ID), nil)
 			if err != nil {
 				log.Println(errorFetch)
 				return
 			}
 
+
+
+			log.Printf("Results for: %s (First Aired: %s)", argsJoin, firstAiredDate)
 			log.Println("Results for:", argsJoin)
 			log.Println("")
 
