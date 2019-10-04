@@ -6,6 +6,15 @@ Trailer is a cli tool that will quickly bring the trailers of any movie or tv sh
 
 ## Build
 
+Download needed packages
+```sh
+go get
+```
+Copy environment file example to your current, add your own TMDB Api Key
+
+```sh
+cp .env.example .env
+```
 Type the command below in the terminal to create the binary.
 
 ```sh
