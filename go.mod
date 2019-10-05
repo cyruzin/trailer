@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/cyruzin/golang-tmdb v1.1.2
+	github.com/joho/godotenv v1.3.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/testify v1.4.0 // indirect
