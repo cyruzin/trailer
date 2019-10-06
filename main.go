@@ -5,7 +5,7 @@ import (
 	"os"
 
 	tmdb "github.com/cyruzin/golang-tmdb"
-	"github.com/cyruzin/trailer/trailer/cmd"
+	cmd "github.com/cyruzin/trailer/cmd/trailer"
 	"github.com/joho/godotenv"
 )
 
