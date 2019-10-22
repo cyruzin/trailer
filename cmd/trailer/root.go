@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"log"
+	"fmt"
 
 	tmdb "github.com/cyruzin/golang-tmdb"
 
@@ -11,6 +11,9 @@ import (
 const youtubeURL = "https://www.youtube.com/watch?v="
 
 const errorFetch = "Oh no! Looks like Thanos snapped his fingers! The Avengers are working to fix this."
+
+// Lang string for language flag.
+var Lang string
 
 // Trailer client structure.
 type Trailer struct {
@@ -29,14 +32,21 @@ func (t *Trailer) RootCmd() *cobra.Command {
 		Short: "Trailer is a tool that get trailers.",
 		Long:  "Trailer is a tool that will quickly bring the link of any movie with a few commands.",
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Println("Let's search some trailer?")
-			log.Println("")
-			log.Println(`Type "trailer --help" to see the commands available.`)
+			fmt.Println("Let's search some trailer?")
+			fmt.Println("")
+			fmt.Println(`Type "trailer --help" to see the commands available.`)
 		},
 	}
 
-	rootCmd.AddCommand(t.movieCmd())
-	rootCmd.AddCommand(t.tvCmd())
+	movie := t.movieCmd()
+	tv := t.tvCmd()
+
+	rootCmd.AddCommand(movie)
+	movie.Flags().StringVarP(&Lang, "lang", "l", "en-US", "language ouput")
+
+	rootCmd.AddCommand(tv)
+	tv.Flags().StringVarP(&Lang, "lang", "l", "en-US", "language ouput")
+
 	rootCmd.AddCommand(versionCmd())
 
 	return rootCmd

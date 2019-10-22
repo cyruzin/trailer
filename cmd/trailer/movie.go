@@ -1,10 +1,15 @@
 package cmd
 
 import (
-	"log"
+	"fmt"
 	"strings"
 
 	"github.com/spf13/cobra"
+)
+
+var (
+	movieOverview = "N/A"
+	usReleaseDate = "N/A"
 )
 
 func (t *Trailer) movieCmd() *cobra.Command {
@@ -16,24 +21,36 @@ func (t *Trailer) movieCmd() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			argsJoin := strings.Join(args, " ")
 
-			search, err := t.client.GetSearchMovies(argsJoin, nil)
+			language, err := cmd.Flags().GetString("lang")
 			if err != nil {
-				log.Println(errorFetch)
+				fmt.Println(err)
+			}
+
+			options := make(map[string]string)
+			if language != "" {
+				options["language"] = language
+			}
+
+			search, err := t.client.GetSearchMovies(argsJoin, options)
+			if err != nil {
+				fmt.Println(errorFetch)
 				return
 			}
 
 			if len(search.Results) <= 0 {
-				log.Println("No results for:", argsJoin)
+				fmt.Println("No results for:", argsJoin)
 				return
+			}
+
+			if search.Results[0].Overview != "" {
+				movieOverview = search.Results[0].Overview
 			}
 
 			releaseDates, err := t.client.GetMovieReleaseDates(int(search.Results[0].ID))
 			if err != nil {
-				log.Println(errorFetch)
+				fmt.Println(errorFetch)
 				return
 			}
-
-			usReleaseDate := "NA"
 
 			for _, res := range releaseDates.Results {
 				if res.Iso3166_1 == "US" {
@@ -41,20 +58,32 @@ func (t *Trailer) movieCmd() *cobra.Command {
 				}
 			}
 
-
-			trailers, err := t.client.GetMovieVideos(int(search.Results[0].ID), nil)
+			trailers, err := t.client.GetMovieVideos(int(search.Results[0].ID), options)
 			if err != nil {
-				log.Println(errorFetch)
+				fmt.Println(errorFetch)
 				return
 			}
 
-			log.Printf("Results for: %s (US Release: %s)", argsJoin, usReleaseDate)
-			log.Println("")
+			if len(trailers.Results) <= 0 {
+				if language != "" {
+					fmt.Printf("No trailers are available for %s in the %s language.\n", argsJoin, language)
+					return
+				}
+				fmt.Printf("No trailers available for: %s.\n", argsJoin)
+				return
+			}
+
+			fmt.Println("Results for: ", argsJoin)
+			fmt.Println("")
+			fmt.Println("Overview: ", movieOverview)
+			fmt.Println("")
+			fmt.Printf("US Release: %s\n", usReleaseDate)
+			fmt.Println("")
 
 			for _, trailer := range trailers.Results {
-				log.Println(trailer.Name)
-				log.Println(youtubeURL + trailer.Key)
-				log.Println("")
+				fmt.Println(trailer.Name)
+				fmt.Println(youtubeURL + trailer.Key)
+				fmt.Println("")
 			}
 		},
 	}

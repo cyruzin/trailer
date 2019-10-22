@@ -26,12 +26,10 @@ func init() {
 		}
 
 		apiKey, _ = os.LookupEnv("TMDB_KEY")
-
 	}
 }
 
 func main() {
-
 	client, err := tmdb.Init(apiKey)
 	if err != nil {
 		log.Println(err)
