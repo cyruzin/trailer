@@ -9,14 +9,28 @@ import (
 	"github.com/joho/godotenv"
 )
 
+var apiKey string
+
+// Checking if the TMDb key is set in the environment variables.
 func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Print("No .env file found")
+	apiKey = os.Getenv("TMDB_KEY")
+}
+
+// Fallback initialization in case the environment variable is not set.
+//
+// Checking if the TMDb key is set in the .env file.
+func init() {
+	if apiKey == "" {
+		if err := godotenv.Load(); err != nil {
+			log.Print("No .env file found")
+		}
+
+		apiKey, _ = os.LookupEnv("TMDB_KEY")
+
 	}
 }
 
 func main() {
-	apiKey, _ := os.LookupEnv("TMDB_KEY")
 
 	client, err := tmdb.Init(apiKey)
 	if err != nil {
