@@ -22,7 +22,8 @@ func init() {
 func init() {
 	if apiKey == "" {
 		if err := godotenv.Load(); err != nil {
-			log.Print("No .env file found")
+			log.Println("[Trailer] No environment variable or .env file config was found")
+			log.Println("")
 		}
 
 		apiKey, _ = os.LookupEnv("TMDB_KEY")
@@ -32,7 +33,7 @@ func init() {
 func main() {
 	client, err := tmdb.Init(apiKey)
 	if err != nil {
-		log.Println(err)
+		log.Println("[Wrapper]", err)
 		return
 	}
 
