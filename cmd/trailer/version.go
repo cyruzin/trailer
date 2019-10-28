@@ -12,7 +12,7 @@ func versionCmd() *cobra.Command {
 		Short:   "Print the version number of Trailer",
 		Aliases: []string{"v"},
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Println("Trailer Cli v1.1.1")
+			log.Println("Trailer Cli v1.1.2")
 		},
 	}
 }

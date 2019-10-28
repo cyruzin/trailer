@@ -31,6 +31,8 @@ func init() {
 }
 
 func main() {
+	log.SetFlags(0)
+
 	client, err := tmdb.Init(apiKey)
 	if err != nil {
 		log.Println("[Wrapper]", err)
