@@ -47,7 +47,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
-			log.Println("Results for: ", argsJoin)
+			log.Println("Results for:", argsJoin)
 			log.Println("")
 
 			for _, trailer := range trailers.Results {
