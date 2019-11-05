@@ -1,9 +1,10 @@
-module trailer
+module github.com/cyruzin/trailer
 
 go 1.13
 
 require (
 	github.com/cyruzin/golang-tmdb v1.1.6
+	github.com/joho/godotenv v1.3.0
 	github.com/magiconair/properties v1.8.1 // indirect
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
