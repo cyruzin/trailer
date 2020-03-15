@@ -42,13 +42,13 @@ func (t *Trailer) RootCmd() *cobra.Command {
 	movie := t.movieCmd()
 	tv := t.tvCmd()
 
-	rootCmd.AddCommand(movie)
-	movie.Flags().StringVarP(&Lang, "lang", "l", "en-US", "language ouput")
+	parseCommonFlags(movie, tv)
 
-	rootCmd.AddCommand(tv)
-	tv.Flags().StringVarP(&Lang, "lang", "l", "en-US", "language ouput")
-
-	rootCmd.AddCommand(versionCmd())
+	rootCmd.AddCommand(
+		movie,
+		tv,
+		versionCmd(),
+	)
 
 	return rootCmd
 }
