@@ -14,9 +14,11 @@ builds:
     - -s -w -X main.build={{.Version}}
   goos:
     - linux
+    - freebsd
     - darwin
     - windows
   goarch:
+    - 386
     - amd64
     - arm
     - arm64
@@ -29,8 +31,10 @@ release:
   name_template: "{{.ProjectName}}-v{{.Version}}"
 
 archives:
-  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+  builds:
+    - default
   format: tar.gz
+  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
   format_overrides:
     - goos: windows
       format: zip
