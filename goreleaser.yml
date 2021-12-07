@@ -8,10 +8,6 @@ before:
     - go mod tidy
 
 builds:
-  env:
-    - CGO_ENABLED=0
-  ldflags:
-    - -s -w -X main.build={{.Version}}
   goos:
     - linux
     - freebsd
@@ -22,13 +18,6 @@ builds:
     - amd64
     - arm
     - arm64
-  main: .
-
-release:
-  github:
-    owner: cyruzin
-    name: trailer
-  name_template: "{{.ProjectName}}-v{{.Version}}"
 
 archives:
   builds:
