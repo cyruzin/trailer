@@ -77,10 +77,10 @@ func (t *Trailer) tvCmd() *cobra.Command {
 
 			if len(trailers.Results) <= 0 {
 				if Lang != "" {
-					log.Printf("No trailers are available for %s in the %s language.\n", argsJoin, Lang)
+					log.Printf("No trailers are available for %s in the %s language.\n", tvShowName, Lang)
 					return
 				}
-				log.Printf("No trailers available for: %s.\n", argsJoin)
+				log.Printf("No trailers available for: %s.\n", tvShowName)
 				return
 			}
 
