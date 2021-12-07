@@ -1,12 +1,17 @@
 package cmd
 
-import "time"
+import (
+	"time"
+)
 
 func parseDate(inDate string) string {
-	layout := "2006-01-02T15:04:05.000Z"
+	if inDate == "" {
+		return "Date unavailable"
+	}
+	layout := "2006-01-02"
 	t, err := time.Parse(layout, inDate)
 	if err != nil {
-		return inDate
+		return "Date unavailable"
 	}
-	return t.Format("02-Jan-2006")
+	return t.Format("2006")
 }

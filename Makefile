@@ -1,5 +1,7 @@
+version=1.2.0
+
 build:
-	go build -ldflags "-s -w" -ldflags "-X cmd.version=1.1.3" -o "dist/trailer"
+	go build -ldflags "-X 'github.com/cyruzin/trailer/cmd/trailer.TrailerVersion=${version}'" -o "dist/trailer"
 
 build-win:
-	go build -ldflags "-s -w" -ldflags "-X cmd.version=1.1.3" -o "dist/trailer.exe"
+	go build -ldflags "-X 'github.com/cyruzin/trailer/cmd/trailer.TrailerVersion=${version}'" -o "dist/trailer.exe"

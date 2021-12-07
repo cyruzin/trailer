@@ -1,9 +1,11 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"strings"
 
+	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 )
 
@@ -32,7 +34,38 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
-			trailers, err := t.client.GetTVVideos(int(search.Results[0].ID), options)
+			var tvResults []string
+
+			for _, val := range search.Results {
+				tvResults = append(
+					tvResults,
+					fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)),
+				)
+			}
+
+			prompt := promptui.Select{
+				Label:    "Select a tv show",
+				Items:    tvResults,
+				Size:     10,
+				HideHelp: true,
+			}
+
+			_, promptResult, err := prompt.Run()
+
+			if err != nil {
+				log.Println(errorFetch)
+				return
+			}
+
+			var tvShowID int64
+
+			for _, val := range search.Results {
+				if promptResult == fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)) {
+					tvShowID = val.ID
+				}
+			}
+
+			trailers, err := t.client.GetTVVideos(int(tvShowID), options)
 			if err != nil {
 				log.Println(errorFetch)
 				return
@@ -47,7 +80,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
-			log.Println("Results for:", argsJoin)
+			log.Println("Results for:", promptResult)
 			log.Println("")
 
 			for _, trailer := range trailers.Results {

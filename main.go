@@ -6,34 +6,12 @@ import (
 
 	tmdb "github.com/cyruzin/golang-tmdb"
 	cmd "github.com/cyruzin/trailer/cmd/trailer"
-	"github.com/joho/godotenv"
 )
-
-var apiKey string
-
-// Checking if the TMDb key is set in the environment variables.
-func init() {
-	apiKey = os.Getenv("TMDB_KEY")
-}
-
-// Fallback initialization in case the environment variable is not set.
-//
-// Checking if the TMDb key is set in the .env file.
-func init() {
-	if apiKey == "" {
-		if err := godotenv.Load(); err != nil {
-			log.Println("[Trailer] No environment variable or .env file config was found")
-			log.Println("")
-		}
-
-		apiKey, _ = os.LookupEnv("TMDB_KEY")
-	}
-}
 
 func main() {
 	log.SetFlags(0)
 
-	client, err := tmdb.Init(apiKey)
+	client, err := tmdb.Init("9aca69849a23528a419aea463387945f")
 	if err != nil {
 		log.Println("[Wrapper]", err)
 		return
