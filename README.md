@@ -1,6 +1,6 @@
 # Trailer
 
-[![build](https://github.com/cyruzin/trailer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/cyruzin/trailer/actions/workflows/build.yml)
+[![build](https://github.com/cyruzin/trailer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/cyruzin/trailer/actions/workflows/build.yml) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 Trailer is a cli tool that will quickly bring the trailers of any movie or tv show with a few commands.
 
@@ -14,16 +14,16 @@ go mod download
 
 Type the command below in the terminal to create the binary.
 
+### For Linux / Mac
+
 ```sh
 make build
 ```
 
-### Linux
-
-Once the build is finished, move the binary to **/usr/bin** folder.
+For Windows
 
 ```sh
-sudo mv ./trailer /usr/bin
+make build-win
 ```
 
 ## Usage
@@ -38,4 +38,18 @@ For TV Shows:
 
 ```sh
 trailer tv game of thrones
+```
+
+## Usage With Language flag
+
+For Movies:
+
+```sh
+trailer movie john wick parabellum --lang=pt-BR
+```
+
+For TV Shows:
+
+```sh
+trailer tv game of thrones --lang=pt-BR
 ```
