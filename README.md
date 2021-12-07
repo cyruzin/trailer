@@ -4,27 +4,9 @@
 
 Trailer is a cli tool that will quickly bring the trailers of any movie or tv show with a few commands.
 
-## Build
+## Download
 
-Download needed packages.
-
-```sh
-go mod download
-```
-
-Type the command below in the terminal to create the binary.
-
-### For Linux / Mac
-
-```sh
-make build
-```
-
-For Windows
-
-```sh
-make build-win
-```
+Head to releases page and download the binary that suits you best.
 
 ## Usage
 
@@ -52,4 +34,26 @@ For TV Shows:
 
 ```sh
 trailer tv game of thrones --lang=pt-BR
+```
+
+## Build
+
+Download needed packages.
+
+```sh
+go mod download
+```
+
+Type the command below in the terminal to create the binary.
+
+### For Linux / Mac
+
+```sh
+make build
+```
+
+For Windows
+
+```sh
+make build-win
 ```
