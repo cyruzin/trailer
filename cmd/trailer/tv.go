@@ -34,34 +34,38 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
-			var tvResults []string
+			var tvShowResults []string
+			var tvShowID int64 = search.Results[0].ID
+			var tvShowName string = search.Results[0].Name
 
-			for _, val := range search.Results {
-				tvResults = append(
-					tvResults,
-					fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)),
-				)
-			}
+			if len(search.Results) > 1 {
+				for _, val := range search.Results {
+					tvShowResults = append(
+						tvShowResults,
+						fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)),
+					)
+				}
 
-			prompt := promptui.Select{
-				Label:    "Select a tv show",
-				Items:    tvResults,
-				Size:     10,
-				HideHelp: true,
-			}
+				prompt := promptui.Select{
+					Label:    "Select a tvShow",
+					Items:    tvShowResults,
+					Size:     10,
+					HideHelp: true,
+				}
 
-			_, promptResult, err := prompt.Run()
+				_, promptResult, err := prompt.Run()
 
-			if err != nil {
-				log.Println(errorFetch)
-				return
-			}
+				tvShowName = promptResult
 
-			var tvShowID int64
+				if err != nil {
+					log.Println(errorFetch)
+					return
+				}
 
-			for _, val := range search.Results {
-				if promptResult == fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)) {
-					tvShowID = val.ID
+				for _, val := range search.Results {
+					if promptResult == fmt.Sprintf("%s - %s", val.Name, parseDate(val.FirstAirDate)) {
+						tvShowID = val.ID
+					}
 				}
 			}
 
@@ -80,7 +84,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				return
 			}
 
-			log.Println("Results for:", promptResult)
+			log.Println("Results for:", tvShowName)
 			log.Println("")
 
 			for _, trailer := range trailers.Results {

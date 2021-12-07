@@ -35,33 +35,37 @@ func (t *Trailer) movieCmd() *cobra.Command {
 			}
 
 			var movieResults []string
+			var movieID int64 = search.Results[0].ID
+			var movieName string = search.Results[0].Title
 
-			for _, val := range search.Results {
-				movieResults = append(
-					movieResults,
-					fmt.Sprintf("%s - %s", val.Title, parseDate(val.ReleaseDate)),
-				)
-			}
+			if len(search.Results) > 1 {
+				for _, val := range search.Results {
+					movieResults = append(
+						movieResults,
+						fmt.Sprintf("%s - %s", val.Title, parseDate(val.ReleaseDate)),
+					)
+				}
 
-			prompt := promptui.Select{
-				Label:    "Select a movie",
-				Items:    movieResults,
-				Size:     10,
-				HideHelp: true,
-			}
+				prompt := promptui.Select{
+					Label:    "Select a movie",
+					Items:    movieResults,
+					Size:     10,
+					HideHelp: true,
+				}
 
-			_, promptResult, err := prompt.Run()
+				_, promptResult, err := prompt.Run()
 
-			if err != nil {
-				log.Println(errorFetch)
-				return
-			}
+				movieName = promptResult
 
-			var movieID int64
+				if err != nil {
+					log.Println(errorFetch)
+					return
+				}
 
-			for _, val := range search.Results {
-				if promptResult == fmt.Sprintf("%s - %s", val.Title, parseDate(val.ReleaseDate)) {
-					movieID = val.ID
+				for _, val := range search.Results {
+					if promptResult == fmt.Sprintf("%s - %s", val.Title, parseDate(val.ReleaseDate)) {
+						movieID = val.ID
+					}
 				}
 			}
 
@@ -80,7 +84,7 @@ func (t *Trailer) movieCmd() *cobra.Command {
 				return
 			}
 
-			log.Println("Results for:", promptResult)
+			log.Println("Results for:", movieName)
 			log.Println("")
 
 			for _, trailer := range trailers.Results {

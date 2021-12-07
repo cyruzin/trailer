@@ -1,4 +1,4 @@
-version=1.2.1
+version=1.2.3
 
 build:
 	go build -ldflags "-X 'github.com/cyruzin/trailer/cmd/trailer.TrailerVersion=${version}'" -o "dist/trailer"
