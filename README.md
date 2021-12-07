@@ -22,7 +22,7 @@ For TV Shows:
 trailer tv game of thrones
 ```
 
-## Usage With Language flag
+## Usage With Language Flag
 
 For Movies:
 
