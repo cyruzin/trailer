@@ -1,5 +1,7 @@
 # Trailer
 
+[![build](https://github.com/cyruzin/trailer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/cyruzin/trailer/actions/workflows/build.yml)
+
 Trailer is a cli tool that will quickly bring the trailers of any movie or tv show with a few commands.
 
 ## Build
