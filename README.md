@@ -46,13 +46,13 @@ go mod download
 
 Type the command below in the terminal to create the binary:
 
-### For Linux / Mac
+For Linux / Mac
 
 ```sh
 make build
 ```
 
-### For Windows
+For Windows
 
 ```sh
 make build-win
