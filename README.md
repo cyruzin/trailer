@@ -38,13 +38,13 @@ trailer tv game of thrones --lang=pt-BR
 
 ## Build
 
-Download needed packages.
+Download needed packages. Type:
 
 ```sh
 go mod download
 ```
 
-Type the command below in the terminal to create the binary.
+Type the command below in the terminal to create the binary:
 
 ### For Linux / Mac
 
@@ -52,7 +52,7 @@ Type the command below in the terminal to create the binary.
 make build
 ```
 
-For Windows
+### For Windows
 
 ```sh
 make build-win
