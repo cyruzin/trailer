@@ -47,7 +47,7 @@ func (t *Trailer) tvCmd() *cobra.Command {
 				}
 
 				prompt := promptui.Select{
-					Label:    "Select a tvShow",
+					Label:    "Select a TV Show",
 					Items:    tvShowResults,
 					Size:     10,
 					HideHelp: true,
