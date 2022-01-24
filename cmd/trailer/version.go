@@ -7,7 +7,7 @@ import (
 )
 
 // TrailerVersion current version
-var TrailerVersion = "1.2.4"
+var TrailerVersion = "1.2.5"
 
 func versionCmd() *cobra.Command {
 	return &cobra.Command{
